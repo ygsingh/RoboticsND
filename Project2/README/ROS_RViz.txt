@@ -1,0 +1,40 @@
+# Running RViz
+
+In a terminal open roscore:
+
+$ roscore
+
+In another terminal, run rviz:
+
+$ rosrun rviz rviz
+
+# RViz Integration
+
+## Modify `robot_description.launch`
+
+Add the following lines after the first `param` definition:
+
+"""
+  <!-- Send fake joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- Send robot states to tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+"""
+
+## Modify `world.launch`
+
+Add the following elements after the `urdf_spawner` node definition:
+
+"""
+<!--launch rviz-->
+<node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+"""
+
+## Launch!
+
+$ cd /home/workspace/catkin_ws/
+$ source devel/setup.bash
+$ roslaunch my_robot world.launch

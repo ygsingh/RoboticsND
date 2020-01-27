@@ -1,0 +1,19 @@
+STEP1: Create the top level catkin workspace directory and a sub-directory named `src`.
+
+$ mkdir -p /home/workspace/catkin_ws/src
+
+STEP2: Navigate to the source directory
+
+$ cd /home/workspace/catkin_ws/src
+
+STEP3: Initialize the catkin workspace, this will create a `CMakeLists.txt` file.
+
+$ catkin_init_workspace
+
+STEP4: Return to top level directory
+
+$ cd /home/workspace/catkin_ws
+
+STEP5: Build the workspace
+
+$ catkin_make

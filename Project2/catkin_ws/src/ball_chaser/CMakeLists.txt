@@ -115,7 +115,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -205,10 +205,13 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(drive_bot src/drive_bot.cpp)
-target_link_libraries(drive_bot ${catkin_LIBRARIES})
-add_dependencies(drive_bot ball_chaser_generate_messages_cpp)
-
 add_executable(process_image src/process_image.cpp)
+
+
+target_link_libraries(drive_bot ${catkin_LIBRARIES})
 target_link_libraries(process_image ${catkin_LIBRARIES})
+
+
+add_dependencies(drive_bot ball_chaser_generate_messages_cpp)
 add_dependencies(process_image ball_chaser_generate_messages_cpp)
 

@@ -26,41 +26,43 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <cylinder radius="0.3" length="0.05"/>
       </geometry>
+
     </collision>
 
     <visual name='chassis_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <box size="0.6 0.55 0.1" />
       </geometry>
+      
     </visual>
 
 
     <collision name='back_caster_collision'>
-      <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.2 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.0499"/>
       </geometry>
     </collision>
 
     <visual name='back_caster_visual'>
-      <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.2 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
     </visual>
 
     <collision name='front_caster_collision'>
-      <origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.2 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.0499"/>
       </geometry>
     </collision>
 
     <visual name='front_caster_visual'>
-      <origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.2 0 -0.05" rpy=" 0 0 0"/>
       <geometry>
         <sphere radius="0.05"/>
       </geometry>
@@ -78,7 +80,7 @@
    <visual>
      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
      <geometry>
-       <cylinder radius="0.1" length="0.05"/>
+       <cylinder radius="0.10" length="0.05"/>
      </geometry>
      <material name="Cyan">
        <color rgba="0 1.0 1.0 1.0"/>
@@ -88,7 +90,7 @@
    <collision>
      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
      <geometry>
-       <cylinder radius="0.1" length="0.05"/>
+       <cylinder radius="0.10" length="0.05"/>
      </geometry>
    </collision>
  </link>
@@ -97,13 +99,13 @@
    <inertial>
      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
      <mass value="5"/>
-     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+     <inertia ixx="0.1"  ixy="0"  ixz="0" iyy="0.1" iyz="0" izz="0.1" />
    </inertial>
 
    <visual>
      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
      <geometry>
-       <cylinder radius="0.1" length="0.05"/>
+       <cylinder radius="0.10" length="0.05"/>
      </geometry>
      <material name="Cyan">
        <color rgba="0 1.0 1.0 1.0"/>
@@ -113,14 +115,14 @@
    <collision>
      <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
      <geometry>
-       <cylinder radius="0.1" length="0.05"/>
+       <cylinder radius="0.10" length="0.05"/>
      </geometry>
    </collision>
  </link>
 
 
   <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0 0.15 0" rpy="0 0 0"/>
+    <origin xyz="0 0.3 0" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -130,7 +132,7 @@
 
 
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="0 -0.3 0" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -165,7 +167,7 @@
 
 
   <joint type="fixed" name="camera_joint">
-    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+    <origin xyz="0.3 0 0" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -198,12 +200,28 @@
 
 
   <joint type="fixed" name="hokuyo_joint">
-    <origin xyz="0.15 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0.10 0 0.1" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
 
+
+  <gazebo reference="chassis">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="camera">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
 
 </robot>
